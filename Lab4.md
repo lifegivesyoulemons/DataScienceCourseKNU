@@ -1,8 +1,13 @@
+```r
 data <- data.frame(read.csv("C:/Users/User/Downloads/hw1_data.csv"))
+```
 #1. Які назви стовпців файлу даних?
+```r
 colnames(data)
 [1] "Ozone"   "Solar.R" "Wind"    "Temp"    "Month"   "Day" 
+```
 #2. Виведіть перші 6 строк фрейму даних.
+```r
 data[1:6, ]
   Ozone Solar.R Wind Temp Month Day
 1    41     190  7.4   67     5   1
@@ -11,10 +16,14 @@ data[1:6, ]
 4    18     313 11.5   62     5   4
 5    NA      NA 14.3   56     5   5
 6    28      NA 14.9   66     5   6
+```
 #3. Скільки спостерігань (строк) в дата фреймі?
+```r
 nrow(data)
 [1] 153
+```
 #4. Виведіть останні 10 строк дата фрейму.
+```r
 tail(data, 10)
     Ozone Solar.R Wind Temp Month Day
 144    13     238 12.6   64     9  21
@@ -27,27 +36,28 @@ tail(data, 10)
 151    14     191 14.3   75     9  28
 152    18     131  8.0   76     9  29
 153    20     223 11.5   68     9  30
+```
 #5. Як багато значень «NA» в стовпці «Ozone»?
+```r
 sum(with(data, is.na(Ozone)))
 [1] 37
-#6. Яке середнє (mean) стовпця «Ozone». Виключити «NA» значення.
-sum <- 0
-count <- 0
-for (i in 1:length(data)) {
-  if (!is.na(data$Ozone[i])) {
-    count <- count +1
-    sum <- sum + data$Ozone[i]
-  }
-}
-mean <- sum/count
-> mean
-[1] 27
+```
+**#6. Яке середнє (mean) стовпця «Ozone». Виключити «NA» значення.**
+```r
+mean(df$Ozone, na.rm = TRUE)
+[1] 42.12931
+```
 #7. Виведіть частину набору даних (subset) зі значенням «Ozone» > 31 та «Temp» > 90. Яке середнє (mean) значень «Solar.R» в цьому наборі даних (subset)?
+```r
 sub <- data[(data$Ozone > 31) & (data$Temp > 90), ]
-
+```
 #8. Яке середнє значення (mean) для «Temp» для червня («Month» дорівнює 6)?
+```r
 mean(data$Temp[data$Month == 6])
 [1] 79.1
+```
 #9. Яке максимальне значення «Ozone» для травня («Month» дорівнює 5)?
+```r
 max(data$Ozone[(data$Month == 5) & (!is.na(data$Ozone))])
 [1] 115
+```
